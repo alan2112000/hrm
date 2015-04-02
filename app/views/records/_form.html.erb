@@ -13,17 +13,17 @@
 
   <div class="field">
     <%= f.label :start_time %><br>
-    <%= f.datetime_select :start_time %>
+    <%= f.datetime_select :start_time, class: 'form-control' %>
   </div>
   <div class="field">
     <%= f.label :end_time %><br>
-    <%= f.datetime_select :end_time %>
+    <%= f.datetime_select :end_time, class: 'form-control' %>
   </div>
   <div class="field">
     <%= f.label :type_id %><br>
-    <%= f.number_field :type_id %>
+    <%= f.number_field :type_id, class: 'form-control' %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: 'btn btn-default' %>
   </div>
 <% end %>

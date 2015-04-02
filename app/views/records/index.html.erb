@@ -1,33 +1,44 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Records</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Start time</th>
-      <th>End time</th>
-      <th>Type</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @records.each do |record| %>
-      <tr>
-        <td><%= record.start_time.to_datetime %></td>
-        <td><%= record.end_time.to_datetime %></td>
-        <td><%= record.type_id %></td>
-        <td><%= record.user_id %></td>
-        <td><%= link_to 'Show', user_records_path(current_user) %></td>
-        <td><%= link_to 'Edit', edit_user_record_path(current_user, record) %></td>
-        <td><%= link_to 'Destroy', user_records_path(current_user, record), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Record', new_user_record_path(current_user.id) %>
+<div class="container">
+  <div class="row clearfix">
+    <div class="col-md-12 column">
+      <h3>
+        Listing Records
+      </h3>
+    </div>
+  </div>
+  <div class="row clearfix">
+    <div class="col-md-12 column">
+      <table class="table">
+        <thead>
+        <tr>
+          <th>
+            Start Time
+          </th>
+          <th>
+            End Time
+          </th>
+          <th>
+            Type
+          </th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @records.each do |record| %>
+          <tr>
+            <td><%= record.start_time.to_datetime %></td>
+            <td><%= record.end_time.to_datetime %></td>
+            <td><%= record.type_id %></td>
+            <td><%= record.user_id %></td>
+            <td><%= link_to 'Show', user_records_path(current_user) %></td>
+            <td><%= link_to 'Edit', edit_user_record_path(current_user, record) %></td>
+            <td><%= link_to 'Destroy', user_records_path(current_user, record), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+    <%= link_to('New Record', new_user_record_path(current_user.id))  %>
+  </div>
+</div>
