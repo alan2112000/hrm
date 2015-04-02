@@ -5,7 +5,7 @@ class RecordsController < ApplicationController
   # GET /records
   # GET /records.json
   def index
-    @records = Record.all
+    @records = current_user.records
   end
 
   # GET /records/1
@@ -15,7 +15,7 @@ class RecordsController < ApplicationController
 
   # GET /records/new
   def new
-    @record = Record.new
+    @record = current_user.records.new
   end
 
   # GET /records/1/edit
@@ -23,7 +23,7 @@ class RecordsController < ApplicationController
   end
 
   def create
-    @record = Record.new(record_params)
+    @record = current_user.records.new(record_params)
       if @record.save
         redirect_to user_records_path(current_user), notice: 'Record was successfully created.'
       else
