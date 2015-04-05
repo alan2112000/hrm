@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150302151551) do
+ActiveRecord::Schema.define(version: 20150308060349) do
 
   create_table "records", force: :cascade do |t|
     t.datetime "start_time"
@@ -22,8 +22,22 @@ ActiveRecord::Schema.define(version: 20150302151551) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "roles", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "types", force: :cascade do |t|
     t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "is_main"
+  end
+
+  create_table "user_role_relationships", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "role_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

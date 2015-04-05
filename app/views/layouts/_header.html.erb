@@ -1,0 +1,8 @@
+<% if current_user %>
+    <% @main_types.each do |type| %>
+        <%= link_to(type.name, user_type_records_path(current_user, type)) %>
+    <% end %>
+<%= link_to('Personal Profile', user_path(current_user)) %>
+<%= link_to('logout', destroy_user_session_path(current_user)) %>
+<% end %>
+

@@ -1,29 +1,25 @@
 class RecordsController < ApplicationController
+  load_and_authorize_resource
+
   before_action :set_record, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
 
-  # GET /records
-  # GET /records.json
   def index
-    @records = Record.all
+    @records = current_user.records
   end
 
-  # GET /records/1
-  # GET /records/1.json
   def show
   end
 
-  # GET /records/new
   def new
-    @record = Record.new
+    @record = current_user.records.build
   end
 
-  # GET /records/1/edit
   def edit
   end
 
   def create
-    @record = Record.new(record_params)
+    @record = current_user.records.new(record_params)
       if @record.save
         redirect_to user_records_path(current_user), notice: 'Record was successfully created.'
       else
@@ -31,22 +27,16 @@ class RecordsController < ApplicationController
       end
   end
 
-  # PATCH/PUT /records/1
-  # PATCH/PUT /records/1.json
   def update
     respond_to do |format|
       if @record.update(record_params)
-        format.html { redirect_to @record, notice: 'Record was successfully updated.' }
-        format.json { render :show, status: :ok, location: @record }
+        format.html { redirect_to user_records_path(current_user,@record), notice: 'Record was successfully updated.' }
       else
         format.html { render :edit }
-        format.json { render json: @record.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /records/1
-  # DELETE /records/1.json
   def destroy
     @record.destroy
     respond_to do |format|
@@ -56,12 +46,10 @@ class RecordsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_record
-      @record = Record.find(params[:id])
+      @record = current_user.reocrds.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def record_params
       params.require(:record).permit(:start_time, :end_time, :type_id, :user_id)
     end

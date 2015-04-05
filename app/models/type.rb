@@ -9,4 +9,7 @@
 #
 
 class Type < ActiveRecord::Base
+  has_many :records
+
+  scope :main, -> { where(is_main: true)}
 end
