@@ -19,6 +19,7 @@
         <td><%= record.start_time.to_datetime %></td>
         <td><%= record.end_time.to_datetime %></td>
         <td><%= record.type.name%></td>
+        <td><%= record.user_id %></td>
         <td><%= link_to 'Show', user_records_path(current_user) %></td>
         <td><%= link_to 'Edit', edit_user_record_path(current_user, record) %></td>
         <td><%= link_to 'Destroy', user_records_path(current_user, record), method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -20,7 +20,11 @@ class User < ActiveRecord::Base
   has_many :roles, through: :user_role_relationships
 
 
+  def ability
+    @ability ||= Ability.new(self)
+  end
+
   def admin?
-    'root'.in? roles.pluck(:name)
+    Settings.role_id.admin.in? roles.pluck(:id)
   end
 end

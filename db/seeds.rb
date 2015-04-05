@@ -13,14 +13,15 @@ Type.create!([{ id: 1, name: 'Absence', is_main: true },
              ])
 
 Role.delete_all
-Role.create!([{ id: 1, name: 'root' },
-              { id: 2, name: 'normal_user' }
+Role.create!([{ id: 1, name: 'admin' },
+              { id: 2, name: 'root'},
+              { id: 3, name: 'normal_user' }
              ])
 
 
 UserRoleRelationship.delete_all
 UserRoleRelationship.create!([{ user_id: 1, role_id: 1 },
-                              { user_id: 2, role_id: 2 }])
+                              { user_id: 2, role_id: 3 }])
 
 
 

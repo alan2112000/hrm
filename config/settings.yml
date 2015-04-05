@@ -1,0 +1,17 @@
+defaults: &defaults
+  type_id:
+    absence: 1
+    overtime: 2
+    annual_leave: 3
+    sick: 4
+  role_id:
+    admin: 1
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
