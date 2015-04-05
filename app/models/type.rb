@@ -12,8 +12,8 @@ class Type < ActiveRecord::Base
   has_many :records
 
   scope :main, -> { where(is_main: true) }
-  scope :absence, -> { where(type_id: 1) }
-  scope :overtime, -> { where(type_id: 2) }
-  scope :annual_leave, -> { where(type_id: 3) }
-  scope :sick, -> { where(type_id: 4) }
+  scope :absence, -> { where(type_id: Settings.type_id.absence) }
+  scope :overtime, -> { where(type_id: Settings.type_id.overtime) }
+  scope :annual_leave, -> { where(type_id: Settings.type_id.annual_leave) }
+  scope :sick, -> { where(type_id: Settings.type_id.sick) }
 end
