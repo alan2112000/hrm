@@ -12,7 +12,7 @@ class RecordsController < ApplicationController
   end
 
   def new
-    @record = current_user.records.build
+    @record = current_user.records.new
   end
 
   def edit
