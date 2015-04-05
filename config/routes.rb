@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'records#index'
 
-  devise_for :users, controllers: { sessions: 'users/sessions'}
+  devise_for :users, controllers: { sessions: 'users/sessions' }
   devise_scope :user do
     get 'sign_in', to: 'devise/sessions#new', as: 'log_in'
     get 'log_out', to: 'devise/sessions#destroy', as: 'log_out'
@@ -12,11 +12,8 @@ Rails.application.routes.draw do
   resources :user_role_relationships
   resources :types
   resources :users do
-    resources :types do
-      resources :records
-    end
+    resources :records
   end
-
 
 
   # The priority is based upon order of creation: first created -> highest priority.

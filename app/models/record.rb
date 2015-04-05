@@ -13,5 +13,5 @@
 
 class Record < ActiveRecord::Base
   belongs_to :user
-  has_one :type
+  belongs_to :type
 end

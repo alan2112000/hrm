@@ -1,5 +1,3 @@
-
-
 puts 'importing seed data'
 
 User.delete_all
@@ -8,10 +6,10 @@ User.create([{ id: 1, name: 'alan', password: 'testtest', email: 'alan@mail.com'
             ])
 
 Type.delete_all
-Type.create!([{ name: 'Absence', is_main: true },
-              { name: 'Overtime', is_main: true },
-              { name: 'Annual Leave' },
-              { name: 'Sick' }
+Type.create!([{ id: 1, name: 'Absence', is_main: true },
+              { id: 2, name: 'Overtime', is_main: true },
+              { id: 3, name: 'Annual Leave' },
+              { id: 4, name: 'Sick' }
              ])
 
 Role.delete_all
