@@ -28,6 +28,7 @@ gem 'devise'
 gem 'cancancan', '~> 1.10'
 gem 'reform'
 gem 'settingslogic'
+gem 'faker'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

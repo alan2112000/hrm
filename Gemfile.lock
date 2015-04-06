@@ -76,6 +76,8 @@ GEM
       uber
     erubis (2.7.0)
     execjs (2.4.0)
+    faker (1.4.3)
+      i18n (~> 0.5)
     globalid (0.3.3)
       activesupport (>= 4.1.0)
     hike (1.2.3)
@@ -198,6 +200,7 @@ DEPENDENCIES
   cancancan (~> 1.10)
   coffee-rails (~> 4.1.0)
   devise
+  faker
   jbuilder (~> 2.0)
   jquery-rails
   rails (= 4.2.0)
