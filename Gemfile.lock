@@ -40,6 +40,7 @@ GEM
       activerecord (>= 3.2, <= 4.3)
       rake (~> 10.4)
     arel (6.0.0)
+    awesome_print (1.6.1)
     bcrypt (3.1.10)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
@@ -76,6 +77,8 @@ GEM
       uber
     erubis (2.7.0)
     execjs (2.4.0)
+    faker (1.4.3)
+      i18n (~> 0.5)
     globalid (0.3.3)
       activesupport (>= 4.1.0)
     hike (1.2.3)
@@ -192,12 +195,14 @@ PLATFORMS
 
 DEPENDENCIES
   annotate
+  awesome_print
   better_errors
   bullet
   byebug
   cancancan (~> 1.10)
   coffee-rails (~> 4.1.0)
   devise
+  faker
   jbuilder (~> 2.0)
   jquery-rails
   rails (= 4.2.0)
