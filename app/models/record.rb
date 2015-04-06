@@ -15,4 +15,16 @@ class Record < ActiveRecord::Base
   belongs_to :user
   belongs_to :type
   scope :absence_between, -> (start_date, end_date){ where("start_time >= ? AND end_time <= ?", start_date, end_date )}
+
+  def absence?
+    type_id == Settings.type_id.absence
+  end
+
+  def overtime?
+    type_id == Settings.type_id.overtime
+  end
+
+  def annual_leave?
+    type_id == Settings.type_id.annual_leave
+  end
 end
