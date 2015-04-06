@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   root 'records#index'
   namespace :admin do
-    resources :reports
+    resources :reports  do
+      collection do
+        get :generate
+      end
+    end
   end
   devise_for :users, controllers: { sessions: 'users/sessions' }
   devise_scope :user do

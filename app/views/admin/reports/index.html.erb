@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" xmlns="http://www.w3.org/1999/html">
   <div class="row clearfix">
     <div class="col-md-12 column">
     </div>
@@ -8,31 +8,47 @@
       <h2>
         Generate Reports
       </h2>
+
       <p>
         Generate all people reports
       </p>
+
+      <p>
+        <%= form_tag('/admin/reports/generate', method: :get) do %>
+            <%= label_tag(:start_time) %>
+            <%= select_date(nil, prefix: :start_time)%><br>
+            <%= label_tag(:end_time) %>
+            <%= select_date(nil, prefix: :end_time) %><br>
+            <%= submit_tag %>
+        <% end %>
+      </p>
+    </div>
+    <div class="col-md-4 column">
+      <h2>
+        Contructing
+      </h2>
+
+      <p>
+        Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
+        condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec
+        sed odio dui.
+      </p>
+
       <p>
         <a class="btn" href="#">View details »</a>
       </p>
     </div>
     <div class="col-md-4 column">
       <h2>
-        Heading
+        I told u it is in constructing
       </h2>
+
       <p>
-        Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+        Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
+        condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec
+        sed odio dui.
       </p>
-      <p>
-        <a class="btn" href="#">View details »</a>
-      </p>
-    </div>
-    <div class="col-md-4 column">
-      <h2>
-        Heading
-      </h2>
-      <p>
-        Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-      </p>
+
       <p>
         <a class="btn" href="#">View details »</a>
       </p>

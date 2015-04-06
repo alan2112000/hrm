@@ -1,0 +1,9 @@
+<br>
+
+<% @users.each do |index, records| %>
+    <% records.each do |record| %>
+        <%= record.start_time %>
+        <%= record.end_time %>
+        <%= record.type.name %>
+    <% end %>
+<% end %>

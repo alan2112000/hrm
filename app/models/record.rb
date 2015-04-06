@@ -14,4 +14,5 @@
 class Record < ActiveRecord::Base
   belongs_to :user
   belongs_to :type
+  scope :absence_between, -> (start_date, end_date){ where("start_time >= ? AND end_time <= ?", start_date, end_date )}
 end
