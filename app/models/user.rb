@@ -16,4 +16,15 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :records
+  has_many :user_role_relationships
+  has_many :roles, through: :user_role_relationships
+
+
+  def ability
+    @ability ||= Ability.new(self)
+  end
+
+  def admin?
+    Settings.role_id.admin.in? roles.pluck(:id)
+  end
 end

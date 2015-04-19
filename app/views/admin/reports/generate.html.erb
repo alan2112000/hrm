@@ -1,0 +1,42 @@
+<br>
+
+<div class="container">
+  <div class="row clearfix">
+    <div class="col-md-12 column">
+      <table class="table">
+        <% @users_record_list.each do |user_report| %>
+            <thead>
+            <tr>
+              <th>User</th>
+              <th>Record Type</th>
+              <th>Start Time</th>
+              <th>End Time</th>
+              <th>Total Time</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% user_report.each_records do |record| %>
+                <tr>
+                  <td><%= record.user.name %></td>
+                  <td><%= record.type.name %></td>
+                  <td> <%= record.start_time.to_s %> </td>
+                  <td> <%= record.end_time %></td>
+                  <td><%= (record.end_time.to_datetime.hour - record.start_time.to_datetime.hour) %></td>
+                </tr>
+            <% end %>
+            <tr>
+              <th>Total Over Time</th>
+              <th>Total Absence</th>
+              <th>Annual Leave</th>
+            </tr>
+            <tr>
+              <td><%= user_report.total_over_time %></td>
+              <td><%= user_report.total_absence %></td>
+              <td><%= user_report.total_annual_leave %></td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
