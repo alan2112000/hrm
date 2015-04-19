@@ -15,14 +15,17 @@
 
       <p>
         <%= form_tag('/admin/reports/generate', method: :get) do %>
-            <%= label_tag(:start_time) %>
-            <%= select_date(nil, prefix: :start_time)%><br>
-            <%= label_tag(:end_time) %>
-            <%= select_date(nil, prefix: :end_time) %><br>
+          <div class="form-group">
+            <%= label_tag(:start_time) %><br>
+            <%= select_date(nil,{prompt: { year: Time.current.year, month: 'Choose Month', day: 'Choose days' },prefix: :start_time }, { class: 'form-control' }) %>
+            <br>
+            <%= label_tag(:end_time) %><br>
+            <%= select_date(Time.current, {prefix: :end_time}, {class: 'form-control'}) %><br>
             <%= label_tag(:record_type) %><br>
-            <%= select_tag(:record_type_id, options_from_collection_for_select(@record_types, :id, :name)) %>
-            <%= submit_tag %>
-        <% end %>
+            <%= select_tag(:record_type_id, options_from_collection_for_select(@record_types, :id, :name), class: 'form-control') %><br>
+            <%= submit_tag 'Generate', class: 'btn btn-default ' %><br>
+          </div>
+      <% end %>
       </p>
     </div>
     <div class="col-md-4 column">

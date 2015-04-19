@@ -30,7 +30,6 @@ gem 'reform'
 gem 'settingslogic'
 gem 'faker'
 gem 'draper', '~> 1.3'
-
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
