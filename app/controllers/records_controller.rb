@@ -5,7 +5,7 @@ class RecordsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @records = current_user.records
+    @records = Record.paginate(page: params[:page], per_page: 10).of_user(current_user.id)
   end
 
   def show

@@ -19,7 +19,7 @@ class Record < ActiveRecord::Base
   scope :overtime, ->(start_date, end_date) {time_between(start_date, end_date)}
   scope :absence_between, -> (start_date, end_date){ time_between(start_date, end_date).where(type_id: Settings.type_id.absence )}
   scope :time_between, -> (start_date, end_date){ where("start_time >= ? AND end_time <= ?", start_date, end_date )}
-
+  scope :of_user, ->(user_id) { where(user_id: user_id)}
 
   def absence?
     type_id == Settings.type_id.absence
