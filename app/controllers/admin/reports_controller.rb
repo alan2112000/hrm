@@ -4,6 +4,8 @@ class Admin::ReportsController < ApplicationController
   def index
     @types = Type.all
     authorize! :read, @types
+
+    @record_types = Type.all
   end
 
   def generate
@@ -15,9 +17,10 @@ class Admin::ReportsController < ApplicationController
                        end_time[:month].to_i,
                        end_time[:day].to_i)
 
+    @records= Record.includes(:user).annual_leave(start_day, end_day)
 
-    @records= Record.includes(:user).absence_between(start_day, end_day)
-    @users = @records.group_by { |record| record.user_id }
+    users = @records.group_by { |record| record.user_id }
+    @users_record_list = UserReport.decorate_collection(users)
   end
 
   private

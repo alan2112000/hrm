@@ -1,4 +1,4 @@
-class Decorator::UserReport
+class UserReport
 
   attr_reader :user, :records
 
@@ -40,7 +40,7 @@ class Decorator::UserReport
   def total_time(records)
     total_time = 0
     records.each do |record|
-      total_time += (record.end_time - record.start_time)
+      total_time += (record.end_time.hour - record.start_time.hour)
     end
 
     total_time
