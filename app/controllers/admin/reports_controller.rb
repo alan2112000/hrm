@@ -12,11 +12,13 @@ class Admin::ReportsController < ApplicationController
 
     if @record_form.validate(record_params)
 
-    records= Record.includes(:user).time_between(@record_form.start_time, @record_form.end_time)
-    users = records.group_by { |record| record.user_id }
-    @users_record_list = UserReport.decorate_collection(users)
+      records            = Record.includes(:user).time_between(@record_form.start_time, @record_form.end_time)
+      users              = records.group_by { |record| record.user_id }
+      @users_record_list = UserReport.decorate_collection(users)
     else
 
+      flash.now[:error] = @record_form.errors.full_messages.to_sentence
+      render :index
     end
   end
 

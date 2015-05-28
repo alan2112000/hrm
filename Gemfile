@@ -32,8 +32,10 @@ gem 'faker'
 gem 'draper', '~> 1.3'
 gem 'will_paginate', '~> 3.0.6'
 gem 'virtus'
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails'
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+# gem 'bcrypt', '~> 3.1.7'¸
 
 # Use Unicorn as the app server
 # gem 'unicorn'

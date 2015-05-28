@@ -16,6 +16,7 @@ class RecordsController < ApplicationController
   end
 
   def edit
+    @record_form = RecordForm.new(@record)
   end
 
   def create
@@ -51,7 +52,7 @@ class RecordsController < ApplicationController
 
   private
   def set_record
-    @record = current_user.reocrds.find(params[:id])
+    @record = current_user.records.find(params[:id])
   end
 
   def record_params

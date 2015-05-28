@@ -6,6 +6,8 @@ defaults: &defaults
     sick: 4
   role_id:
     admin: 1
+    root: 2
+    normal_user: 3
 
 development:
   <<: *defaults

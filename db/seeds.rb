@@ -14,10 +14,11 @@ Role.create!([{ id: 1, name: 'admin' },
              ])
 
 
-
-
-
-
+#
+#
+# User.create([{ id: 1, name: 'Bank', password: 'bank', email: 'bank@mail.com'},
+#             {id: 2, name: 'Gadii', password: 'gadii', email: 'gadii@mail.com' },
+#               ])
 
 
 

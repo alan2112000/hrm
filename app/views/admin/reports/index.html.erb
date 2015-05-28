@@ -10,15 +10,30 @@
       </h2>
 
       <p>
-        <%= form_for(@record_form, {url: '/admin/reports/generate', method: :get}) do |f| %>
+        <%= form_for(@record_form, { url: generate_admin_reports_path, method: :get }) do |f| %>
           <div class="form-group">
             <%= f.label(:start_time) %><br>
-            <%= f.datetime_select(:start_time, { prompt: { year: Time.current.year, month: 'Choose Month', day: 'Choose days' }}, { class: 'form-control' }) %>
+
+            <div class="input-group date" id="datetimepicker_start">
+              <%= f.text_field :start_time, class: 'form-control', value: Date.today.last_month %>
+              <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar">
+                </span>
+              </span>
+            </div>
             <br>
             <%= f.label(:end_time) %><br>
-            <%= f.datetime_select(:end_time, {}, { class: 'form-control' }) %><br>
+
+            <div class="input-group date" id="datetimepicker_end">
+              <%= f.text_field :end_time, class: 'form-control', value: Date.today %>
+              <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar">
+                </span>
+                    </span>
+            </div>
             <%= f.label(:type_id) %><br>
-            <%= f.collection_select(:type_id, f.object.types, :id, :name, {prompt: 'Please Select'}, { class: 'form-control' }) %><br>
+            <%= f.collection_select(:type_id, f.object.types, :id, :name, { prompt: 'Please Select' }, { class: 'form-control' }) %>
+            <br>
             <%= f.submit 'Preview', class: 'btn btn-default ' %><br>
           </div>
       <% end %>

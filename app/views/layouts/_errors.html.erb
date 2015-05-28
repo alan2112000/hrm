@@ -1,0 +1,12 @@
+<% unless flash.now[:alert].blank? %>
+    <div id="error_explanation">
+      <% if flash.now[:alert].is_a? Array %>
+          <% flash.now[:alert].each do |message| %>
+              <li><%= message.to_s %></li>
+          <% end %>
+      <% else %>
+         <li><%= flash.now[:alert] %></li>
+      <% end %>
+      </ul>
+    </div>
+<% end %>

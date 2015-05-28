@@ -1,4 +1,4 @@
-<%= form_for(@record_form, { url: user_records_path(current_user), class: 'form-horizontal' }) do |f| %>
+<%= form_for(@record_form, { url: @record_form.url, class: 'form-horizontal' }) do |f| %>
 
     <div class="field">
       <%= f.label :start_time %><br>
