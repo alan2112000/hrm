@@ -6,31 +6,27 @@
   <div class="row clearfix">
     <div class="col-md-4 column">
       <h2>
-        Generate Reports
+        Generate All Reports
       </h2>
 
       <p>
-        Generate all people reports
-      </p>
-
-      <p>
-        <%= form_tag('/admin/reports/generate', method: :get) do %>
+        <%= form_for(@record_form, {url: '/admin/reports/generate', method: :get}) do |f| %>
           <div class="form-group">
-            <%= label_tag(:start_time) %><br>
-            <%= select_date(nil,{prompt: { year: Time.current.year, month: 'Choose Month', day: 'Choose days' },prefix: :start_time }, { class: 'form-control' }) %>
+            <%= f.label(:start_time) %><br>
+            <%= f.datetime_select(:start_time, { prompt: { year: Time.current.year, month: 'Choose Month', day: 'Choose days' }}, { class: 'form-control' }) %>
             <br>
-            <%= label_tag(:end_time) %><br>
-            <%= select_date(Time.current, {prefix: :end_time}, {class: 'form-control'}) %><br>
-            <%= label_tag(:record_type) %><br>
-            <%= select_tag(:record_type_id, options_from_collection_for_select(@record_types, :id, :name), class: 'form-control') %><br>
-            <%= submit_tag 'Generate', class: 'btn btn-default ' %><br>
+            <%= f.label(:end_time) %><br>
+            <%= f.datetime_select(:end_time, {}, { class: 'form-control' }) %><br>
+            <%= f.label(:type_id) %><br>
+            <%= f.collection_select(:type_id, f.object.types, :id, :name, {prompt: 'Please Select'}, { class: 'form-control' }) %><br>
+            <%= f.submit 'Preview', class: 'btn btn-default ' %><br>
           </div>
       <% end %>
       </p>
     </div>
     <div class="col-md-4 column">
       <h2>
-        Contructing
+        Constructing
       </h2>
 
       <p>

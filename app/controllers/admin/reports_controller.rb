@@ -2,31 +2,32 @@ class Admin::ReportsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @types = Type.all
     authorize! :read, @types
 
-    @record_types = Type.all
+    @record_form = RecordForm.new(Record.new)
   end
 
   def generate
-    start_day = Date.new(start_time[:year].to_i,
-                         start_time[:month].to_i,
-                         start_time[:day].to_i)
+    @record_form = RecordForm.new(Record.new)
 
-    end_day = Date.new(end_time[:year].to_i,
-                       end_time[:month].to_i,
-                       end_time[:day].to_i)
+    if @record_form.validate(record_params)
 
-    @records= Record.includes(:user).annual_leave(start_day, end_day)
-
-    users = @records.group_by { |record| record.user_id }
+    records= Record.includes(:user).time_between(@record_form.start_time, @record_form.end_time)
+    users = records.group_by { |record| record.user_id }
     @users_record_list = UserReport.decorate_collection(users)
+    else
+
+    end
   end
 
   private
 
   def month_params
     params.permit()
+  end
+
+  def record_params
+    params.require(:record).permit(:start_time, :end_time, :type_id, :user_id)
   end
 
   def start_time

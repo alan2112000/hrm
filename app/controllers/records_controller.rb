@@ -12,19 +12,23 @@ class RecordsController < ApplicationController
   end
 
   def new
-    @record = current_user.records.new
+    @record_form = RecordForm.new(current_user.records.new)
   end
 
   def edit
   end
 
   def create
-    @record = current_user.records.new(record_params)
-      if @record.save
-        redirect_to user_records_path(current_user), notice: 'Record was successfully created.'
-      else
-        render :new
-      end
+    @record_form = RecordForm.new(current_user.records.new)
+    if @record_form.validate(record_params)
+      @record_form.save
+      # @records = Record.paginate(page: params[:page], per_page: 10).of_user(current_user.id)
+      # redirect_to controller: 'records', action: 'index', page: @records.total_pages
+      redirect_to user_records_path(current_user), notice: "Record Created Success"
+    else
+      flash.now[:alert] = @record_form.errors.full_messages
+      render :new
+    end
   end
 
   def update
@@ -46,11 +50,11 @@ class RecordsController < ApplicationController
   end
 
   private
-    def set_record
-      @record = current_user.reocrds.find(params[:id])
-    end
+  def set_record
+    @record = current_user.reocrds.find(params[:id])
+  end
 
-    def record_params
-      params.require(:record).permit(:start_time, :end_time, :type_id, :user_id)
-    end
+  def record_params
+    params.require(:record).permit(:start_time, :end_time, :type_id, :user_id)
+  end
 end

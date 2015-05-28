@@ -9,8 +9,8 @@ namespace :dev do
                 ])
 
     UserRoleRelationship.delete_all
-    UserRoleRelationship.create!([{ user_id: 1, role_id: 1 },
-                                  { user_id: 2, role_id: 2 }])
+    UserRoleRelationship.create!([{ user_id: 1, role_id: Settings.role_id.admin },
+                                  { user_id: 2, role_id: Settings.role_id.root }])
 
     Record.delete_all
 
